@@ -1,6 +1,7 @@
 const ERRORS = {
   ALREADY_EXISTS: "já existe. Tente novamente!",
   NOT_FOUND: "não existe. Tente novamente!",
+  PASSWORD_INCORRECT: "Senha incorreta. Tente novamente!",
 };
 
 const SUCESS = {
