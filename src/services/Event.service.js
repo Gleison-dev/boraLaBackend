@@ -2,6 +2,7 @@ import { EventEntity } from "../entities/event.entity.js";
 import { ERRORS, SUCESS } from "../shared/messages.shared.js";
 
 class EventService {
+  // CADASTRAR EVENTO
   async createEventService(
     title,
     description,
@@ -34,11 +35,13 @@ class EventService {
     return `Evento ${SUCESS.CREATE}`;
   }
 
+  // LISTAR TODOS OS EVENTOS CADASTRADOS
   async getAllEventsService() {
     const events = await EventEntity.findAll();
     return events;
   }
 
+  // LISTAR EVENTO PELO ID
   async getEventByIdService(id) {
     const event = await EventEntity.findByPk(id);
     if (!event) {
@@ -49,6 +52,7 @@ class EventService {
     return event;
   }
 
+  // ATUALIZAR EVENTO (NOME, DESCRIÇÃO, DATA, HORA, ETC)
   async updateEventService(id, data) {
     const event = await EventEntity.findByPk(id);
     if (!event) {
@@ -60,6 +64,7 @@ class EventService {
     return `Evento ${SUCESS.UPDATE}`;
   }
 
+  // DELETAR EVENTO PELO ID (VAI PRECISAR DA SENHA FUTURAMENTE)
   async deleteEventService(id) {
     const event = await EventEntity.findByPk(id);
     if (!event) {
