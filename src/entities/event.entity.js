@@ -35,6 +35,9 @@ const EventEntity = database.define("tb_events", {
     type: DataTypes.DECIMAL(10, 2),
     allowNull: true,
   },
+  status: {
+    type: DataTypes.ENUM("PUBLICADO", "CANCELADO", "FINALIZADO"),
+  },
 });
 
 export { EventEntity };
