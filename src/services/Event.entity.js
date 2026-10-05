@@ -10,6 +10,7 @@ class EventService {
     location,
     address,
     price,
+    status,
   ) {
     const verifyEventExists = await EventEntity.findOne({
       title,
@@ -28,6 +29,7 @@ class EventService {
       location,
       address,
       price,
+      status,
     });
     return `Evento ${SUCESS.CREATE}`;
   }
