@@ -3,6 +3,7 @@ import { ERRORS, SUCESS } from "../shared/messages.shared.js";
 import bcrypt from "bcrypt";
 
 class UserService {
+  // CADASTRAR USUÁRIO
   async createUserService(name, last_name, email, password, role) {
     const verifyUserExists = await UserEntity.findOne({
       where: {
@@ -25,11 +26,13 @@ class UserService {
     return `Usuário ${SUCESS.CREATE}`;
   }
 
+  // LISTAR TODOS OS USUÁRIOS
   async getAllUsersService() {
     const allUsers = await UserEntity.findAll();
     return allUsers;
   }
 
+  // LISTAR USUÁRIO PELO ID
   async getUserByIdService(id) {
     const user = await UserEntity.findByPk(id);
     if (!user) {
@@ -40,6 +43,7 @@ class UserService {
     return user;
   }
 
+  // ATUALIZAR O USUÁRIO (NOME, EMAIL, PASSWORD, ETC)
   async updateUserService(id, data) {
     const user = await UserEntity.findByPk(id);
     if (!user) {
@@ -51,6 +55,7 @@ class UserService {
     return `Usuário ${SUCESS.UPDATE}`;
   }
 
+  // DELETAR USUÁRIO (PRECISA DO ID E DA SENHA)
   async deleteUserService(id, password) {
     const user = await UserEntity.findByPk(id);
     if (!user) {
