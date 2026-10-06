@@ -5,9 +5,11 @@ const instanceEventService = new EventService();
 // CADASTRAR EVENTO
 const createEvent = async (req, res) => {
   try {
+    const userId = req.userId;
     const { title, description, date, time, location, address, price, status } =
       req.body;
     const newEvent = await instanceEventService.createEventService(
+      userId,
       title,
       description,
       date,
