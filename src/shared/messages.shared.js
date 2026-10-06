@@ -4,7 +4,8 @@ const ERRORS = {
   TOKEN_EXPIRED: "Token não informado ou expirado!",
   EMAIL_INCORRECT: "E-mail incorreto. Tente novamente!",
   PASSWORD_INCORRECT: "Senha incorreta. Tente novamente!",
-  ONLY_ADMINS: "Acesso negado! Somente Administrador!"
+  ONLY_ADMINS: "Acesso negado! Somente Administrador!",
+  ONLY_ORGANIZER: "Acesso negado! Somente Organizadores!",
 };
 
 const SUCESS = {
