@@ -4,6 +4,7 @@ import { ERRORS, SUCESS } from "../shared/messages.shared.js";
 class EventService {
   // CADASTRAR EVENTO
   async createEventService(
+    userId,
     title,
     description,
     date,
@@ -14,6 +15,7 @@ class EventService {
     status,
   ) {
     const verifyEventExists = await EventEntity.findOne({
+      userId,
       title,
       date,
     });
@@ -23,6 +25,7 @@ class EventService {
       throw error;
     }
     const newEvent = await EventEntity.create({
+      userId,
       title,
       description,
       date,
