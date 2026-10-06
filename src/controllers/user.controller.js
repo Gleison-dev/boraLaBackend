@@ -18,6 +18,16 @@ const createUser = async (req, res) => {
   }
 };
 
+const loginUser = async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    const login = await instanceUserService.loginService(email, password);
+    return res.status(201).json({ login });
+  } catch (error) {
+    return res.status(error.status || 500).json({ message: error.message });
+  }
+};
+
 const getAllUsers = async (req, res) => {
   try {
     const users = await instanceUserService.getAllUsersService();
@@ -59,4 +69,4 @@ const deleteUser = async (req, res) => {
   }
 };
 
-export { createUser, getAllUsers, getUserById, updateUser, deleteUser };
+export { createUser, login, getAllUsers, getUserById, updateUser, deleteUser };
