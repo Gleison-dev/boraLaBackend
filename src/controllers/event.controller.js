@@ -49,6 +49,7 @@ const getEventById = async (req, res) => {
 // ATUALIZAR EVENTO
 const updateEvent = async (req, res) => {
   try {
+    const userId = req.userId;
     const { id } = req.query;
     const { ...data } = req.body;
     const event = await instanceEventService.updateEventService(id, data);
@@ -61,6 +62,7 @@ const updateEvent = async (req, res) => {
 // EXCLUIR EVENTO
 const deleteEvent = async (req, res) => {
   try {
+    const userId = req.userId;
     const { id } = req.query;
     const event = await instanceEventService.deleteEventService(id);
     return res.status(201).json({ event });
