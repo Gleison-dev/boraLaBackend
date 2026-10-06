@@ -34,7 +34,7 @@ class UserService {
       },
     });
     if (!user) {
-      const error = new Error(`Usuário ${ERRORS.NOT_FOUND}`);
+      const error = new Error(`${ERRORS.EMAIL_INCORRECT}`);
       error.status = 404;
       throw error;
     }
