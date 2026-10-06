@@ -7,6 +7,10 @@ const EventEntity = database.define("tb_events", {
     primaryKey: true,
     defaultValue: Sequelize.UUIDV4,
   },
+  userId: {
+    type: DataTypes.UUID,
+    allowNull: false,
+  },
   title: {
     type: DataTypes.STRING,
     allowNull: false,
