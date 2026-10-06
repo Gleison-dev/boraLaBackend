@@ -20,15 +20,10 @@ eventRouter.post(
 );
 
 // ROTA PARA LISTAR TODOS OS EVENTOS
-eventRouter.get("/events", authMiddleware, organizerMiddleware, getAllEvents);
+eventRouter.get("/events", authMiddleware, getAllEvents);
 
 // ROTA PARA LISTAR EVENTOS POR ID
-eventRouter.get(
-  "/eventById",
-  authMiddleware,
-  organizerMiddleware,
-  getEventById,
-);
+eventRouter.get("/eventById", authMiddleware, getEventById);
 
 // ROTA PARA ATUALIZAR ATUALIZAR EVENTO
 eventRouter.get(
