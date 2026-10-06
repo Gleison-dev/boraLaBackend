@@ -101,7 +101,9 @@ class UserService {
       throw error;
     }
     const deleteUser = await UserEntity.destroy({
-      id,
+      where: {
+        id,
+      },
     });
     return `Usuário ${SUCESS.DELETE}`;
   }
