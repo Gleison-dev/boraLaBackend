@@ -16,7 +16,7 @@ const EventEntity = database.define("tb_events", {
     allowNull: false,
   },
   description: {
-    type: DataTypes.STRING,
+    type: DataTypes.TEXT,
     allowNull: false,
   },
   date: {
