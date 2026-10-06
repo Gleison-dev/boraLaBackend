@@ -1,4 +1,3 @@
-import { Router } from "express";
 import {
   createUser,
   loginUser,
@@ -7,14 +6,16 @@ import {
   updateUser,
   deleteUser,
 } from "../controllers/user.controller.js";
+import { Router } from "express";
+import authMiddleware from "../middlewares/auth.middleware.js";
 
 const userRouter = Router();
 
 userRouter.post("/createUser", createUser);
 userRouter.post("/login", loginUser);
-userRouter.get("/users", getAllUsers);
-userRouter.get("/userById", getUserById);
-userRouter.put("/createUser", updateUser);
-userRouter.post("/deleteUser", deleteUser);
+userRouter.get("/users", authMiddleware, getAllUsers);
+userRouter.get("/userById", authMiddleware, getUserById);
+userRouter.put("/editUser", authMiddleware, updateUser);
+userRouter.post("/deleteUser", authMiddleware, deleteUser);
 
 export { userRouter };
