@@ -56,11 +56,16 @@ class EventService {
   }
 
   // ATUALIZAR EVENTO (NOME, DESCRIÇÃO, DATA, HORA, ETC)
-  async updateEventService(id, data) {
+  async updateEventService(userId, id, data) {
     const event = await EventEntity.findByPk(id);
     if (!event) {
       const error = new Error(`Evento ${ERRORS.NOT_FOUND}`);
       error.status = 404;
+      throw error;
+    }
+    if (userId !== event.userId) {
+      const error = new Error("Você não pode atualizar este evento!");
+      error.status = 409;
       throw error;
     }
     await event.update(data);
@@ -68,11 +73,16 @@ class EventService {
   }
 
   // DELETAR EVENTO PELO ID (VAI PRECISAR DA SENHA FUTURAMENTE)
-  async deleteEventService(id) {
+  async deleteEventService(userId, id) {
     const event = await EventEntity.findByPk(id);
     if (!event) {
       const error = new Error(`Evento ${ERRORS.NOT_FOUND}`);
       error.status = 404;
+      throw error;
+    }
+    if (userId !== event.userId) {
+      const error = new Error("Você não pode atualizar este evento!");
+      error.status = 409;
       throw error;
     }
     const deleteEvent = await EventEntity.destroy({
