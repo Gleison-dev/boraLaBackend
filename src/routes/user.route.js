@@ -1,6 +1,7 @@
 import { Router } from "express";
 import {
   createUser,
+  loginUser,
   getAllUsers,
   getUserById,
   updateUser,
@@ -10,6 +11,7 @@ import {
 const userRouter = Router();
 
 userRouter.post("/createUser", createUser);
+userRouter.post("/login", loginUser);
 userRouter.get("/users", getAllUsers);
 userRouter.get("/userById", getUserById);
 userRouter.put("/createUser", updateUser);
