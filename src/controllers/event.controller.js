@@ -52,7 +52,11 @@ const updateEvent = async (req, res) => {
     const userId = req.userId;
     const { id } = req.query;
     const { ...data } = req.body;
-    const event = await instanceEventService.updateEventService(userId, id, data);
+    const event = await instanceEventService.updateEventService(
+      userId,
+      id,
+      data,
+    );
     return res.status(201).json({ event });
   } catch (error) {
     return res.status(error.status || 500).json({ message: error.message });
