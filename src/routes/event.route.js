@@ -26,8 +26,8 @@ eventRouter.get("/events", authMiddleware, getAllEvents);
 eventRouter.get("/eventById", authMiddleware, getEventById);
 
 // ROTA PARA ATUALIZAR ATUALIZAR EVENTO
-eventRouter.get(
-  "/updateEvent",
+eventRouter.put(
+  "/editEvent",
   authMiddleware,
   organizerMiddleware,
   updateEvent,
