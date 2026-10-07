@@ -74,7 +74,7 @@ class EventService {
     return `Evento ${SUCESS.UPDATE}`;
   }
 
-  // DELETAR EVENTO PELO ID (VAI PRECISAR DA SENHA FUTURAMENTE)
+  // DELETAR EVENTO PELO ID
   async deleteEventService(userId, id, password) {
     const user = await UserEntity.findByPk(userId);
     if (!user) {

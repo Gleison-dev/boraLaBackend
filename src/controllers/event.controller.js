@@ -68,7 +68,12 @@ const deleteEvent = async (req, res) => {
   try {
     const userId = req.userId;
     const { id } = req.query;
-    const event = await instanceEventService.deleteEventService(userId, id);
+    const { password } = req.body;
+    const event = await instanceEventService.deleteEventService(
+      userId,
+      id,
+      password,
+    );
     return res.status(201).json({ event });
   } catch (error) {
     return res.status(error.status || 500).json({ message: error.message });
