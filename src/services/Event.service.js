@@ -89,7 +89,7 @@ class EventService {
       throw error;
     }
     if (userId !== event.userId) {
-      const error = new Error("Você não pode atualizar este evento!");
+      const error = new Error("Você não pode excluir este evento!");
       error.status = 409;
       throw error;
     }
@@ -99,7 +99,7 @@ class EventService {
       error.status = 409;
       throw error;
     }
-    const deleteEvent = await EventEntity.destroy({
+    await EventEntity.destroy({
       where: {
         id,
       },
