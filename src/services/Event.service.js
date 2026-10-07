@@ -1,5 +1,7 @@
-import { EventEntity } from "../entities/event.entity.js";
 import { ERRORS, SUCESS } from "../shared/messages.shared.js";
+import { EventEntity } from "../entities/event.entity.js";
+import { UserEntity } from "../entities/user.entity.js";
+import bcrypt from "bcrypt";
 
 class EventService {
   // CADASTRAR EVENTO
@@ -73,7 +75,13 @@ class EventService {
   }
 
   // DELETAR EVENTO PELO ID (VAI PRECISAR DA SENHA FUTURAMENTE)
-  async deleteEventService(userId, id) {
+  async deleteEventService(userId, id, password) {
+    const user = await UserEntity.findByPk(userId);
+    if (!user) {
+      const error = new Error(`Usuário ${ERRORS.NOT_FOUND}`);
+      error.status = 404;
+      throw error;
+    }
     const event = await EventEntity.findByPk(id);
     if (!event) {
       const error = new Error(`Evento ${ERRORS.NOT_FOUND}`);
@@ -82,6 +90,12 @@ class EventService {
     }
     if (userId !== event.userId) {
       const error = new Error("Você não pode atualizar este evento!");
+      error.status = 409;
+      throw error;
+    }
+    const comparePassword = await bcrypt.compare(password, user.password);
+    if (!comparePassword) {
+      const error = new Error(`${ERRORS.PASSWORD_INCORRECT}`);
       error.status = 409;
       throw error;
     }
