@@ -2,8 +2,7 @@ const ERRORS = {
   ALREADY_EXISTS: "já existe. Tente novamente!",
   NOT_FOUND: "não existe. Tente novamente!",
   TOKEN_EXPIRED: "Token não informado ou expirado!",
-  EMAIL_INCORRECT: "E-mail incorreto. Tente novamente!",
-  PASSWORD_INCORRECT: "Senha incorreta. Tente novamente!",
+  EMAIL_PASSWORD_INCORRECT: "E-mail ou senha incorretos. Tente novamente!",
   ONLY_ADMINS: "Acesso negado! Somente Administrador!",
   ONLY_ORGANIZER: "Acesso negado! Somente Organizadores!",
 };

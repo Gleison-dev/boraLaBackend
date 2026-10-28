@@ -34,14 +34,14 @@ class UserService {
       },
     });
     if (!user) {
-      const error = new Error(`${ERRORS.EMAIL_INCORRECT}`);
-      error.status = 404;
+      const error = new Error(`${ERRORS.EMAIL_PASSWORD_INCORRECT}`);
+      error.status = 401;
       throw error;
     }
-    const comparePassword = bcrypt.compare(password, user.password);
+    const comparePassword = await bcrypt.compare(password, user.password);
     if (!comparePassword) {
-      const error = new Error(`${ERRORS.PASSWORD_INCORRECT}`);
-      error.status = 409;
+      const error = new Error(`${ERRORS.EMAIL_PASSWORD_INCORRECT}`);
+      error.status = 401;
       throw error;
     }
     const token = jwt.sign(
