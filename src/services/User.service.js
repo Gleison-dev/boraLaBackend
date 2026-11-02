@@ -57,6 +57,18 @@ class UserService {
     return { token: token };
   }
 
+  async meService(userId) {
+    const user = await UserEntity.findByPk(userId, {
+      attributes: ["name", "last_name", "email"],
+    });
+    if (!user) {
+      const error = new Error(`Usuário ${ERRORS.NOT_FOUND}`);
+      error.status = 404;
+      throw error;
+    }
+    return user;
+  }
+
   // LISTAR TODOS OS USUÁRIOS
   async getAllUsersService() {
     const allUsers = await UserEntity.findAll();
@@ -96,7 +108,7 @@ class UserService {
     }
     const comparePassword = await bcrypt.compare(password, user.password);
     if (!comparePassword) {
-      const error = new Error(`${ERRORS.PASSWORD_INCORRECT}`);
+      const error = new Error(`${ERRORS.EMAIL_PASSWORD_INCORRECT}`);
       error.status = 401;
       throw error;
     }
