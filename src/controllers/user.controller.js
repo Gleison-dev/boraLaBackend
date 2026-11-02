@@ -28,6 +28,16 @@ const loginUser = async (req, res) => {
   }
 };
 
+const me = async (req, res) => {
+  try {
+    const userId = req.userId;
+    const user = await instanceUserService.meService(userId);
+    return res.status(201).json({ user });
+  } catch (error) {
+    return res.status(error.status || 500).json({ message: error.message });
+  }
+};
+
 const getAllUsers = async (req, res) => {
   try {
     const users = await instanceUserService.getAllUsersService();
@@ -72,6 +82,7 @@ const deleteUser = async (req, res) => {
 export {
   createUser,
   loginUser,
+  me,
   getAllUsers,
   getUserById,
   updateUser,
