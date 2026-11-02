@@ -1,6 +1,7 @@
 import {
   createUser,
   loginUser,
+  me,
   getAllUsers,
   getUserById,
   updateUser,
@@ -16,6 +17,9 @@ userRouter.post("/createUser", createUser);
 
 // LOGIN
 userRouter.post("/login", loginUser);
+
+// LISTA NOME, SOBRENOME E EMAIL DO USUÁRIO PELO "userId"
+userRouter.get("/me", authMiddleware, me);
 
 //LISTAR TODOS OS USUÁRIOS
 userRouter.get("/users", authMiddleware, getAllUsers);
