@@ -95,7 +95,7 @@ class EventService {
     }
     const comparePassword = await bcrypt.compare(password, user.password);
     if (!comparePassword) {
-      const error = new Error(`${ERRORS.PASSWORD_INCORRECT}`);
+      const error = new Error(`${ERRORS.EMAIL_PASSWORD_INCORRECT}`);
       error.status = 409;
       throw error;
     }
