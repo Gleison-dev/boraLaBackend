@@ -59,7 +59,7 @@ class UserService {
 
   async meService(userId) {
     const user = await UserEntity.findByPk(userId, {
-      attributes: ["name", "last_name", "email"],
+      attributes: ["id", "name", "last_name", "email"],
     });
     if (!user) {
       const error = new Error(`Usuário ${ERRORS.NOT_FOUND}`);
