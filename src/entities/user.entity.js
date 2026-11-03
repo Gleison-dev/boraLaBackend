@@ -24,7 +24,7 @@ const UserEntity = database.define("tb_user", {
     allowNull: false,
   },
   role: {
-    type: DataTypes.ENUM("PARTICIPANT", "ORGANIZER", "ADMIN"),
+    type: DataTypes.ENUM("USER", "ADMIN"),
     allowNull: false,
   },
 });
