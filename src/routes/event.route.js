@@ -6,18 +6,13 @@ import {
   deleteEvent,
 } from "../controllers/event.controller.js";
 import { Router } from "express";
-import organizerMiddleware from "../middlewares/organizer.middleware.js";
+
 import authMiddleware from "../middlewares/auth.middleware.js";
 
 const eventRouter = Router();
 
 // ROTA PARA CADASTRAR NOVOS EVENTOS
-eventRouter.post(
-  "/createEvent",
-  authMiddleware,
-  organizerMiddleware,
-  createEvent,
-);
+eventRouter.post("/createEvent", authMiddleware, createEvent);
 
 // ROTA PARA LISTAR TODOS OS EVENTOS
 eventRouter.get("/events", authMiddleware, getAllEvents);
@@ -26,20 +21,10 @@ eventRouter.get("/events", authMiddleware, getAllEvents);
 eventRouter.get("/eventById", authMiddleware, getEventById);
 
 // ROTA PARA ATUALIZAR ATUALIZAR EVENTO
-eventRouter.put(
-  "/editEvent",
-  authMiddleware,
-  organizerMiddleware,
-  updateEvent,
-);
+eventRouter.put("/editEvent", authMiddleware, updateEvent);
 
 // ROTA PARA DELETAR O EVENTO
-eventRouter.delete(
-  "/deleteEvent",
-  authMiddleware,
-  organizerMiddleware,
-  deleteEvent,
-);
+eventRouter.delete("/deleteEvent", authMiddleware, deleteEvent);
 
 // EXPORTANDO PARA O INDEX ROUTER
 export { eventRouter };
