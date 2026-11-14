@@ -42,7 +42,9 @@ class EventService {
 
   // LISTAR TODOS OS EVENTOS CADASTRADOS
   async getAllEventsService() {
-    const events = await EventEntity.findAll();
+    const events = await EventEntity.findAll({
+      attributes: ["title", "location", "date", "time"],
+    });
     return events;
   }
 
