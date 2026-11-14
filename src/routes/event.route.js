@@ -15,7 +15,7 @@ const eventRouter = Router();
 eventRouter.post("/createEvent", authMiddleware, createEvent);
 
 // ROTA PARA LISTAR TODOS OS EVENTOS
-eventRouter.get("/events", authMiddleware, getAllEvents);
+eventRouter.get("/events", getAllEvents);
 
 // ROTA PARA LISTAR EVENTOS POR ID
 eventRouter.get("/eventById", authMiddleware, getEventById);
